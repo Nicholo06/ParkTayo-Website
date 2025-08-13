@@ -143,25 +143,103 @@
             margin-top: 2rem;
         }
 
-        .btn-primary {
-            background: #34a853;
+        /* Google Play Badge - Easy to Replace */
+        .google-play-badge {
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .google-play-badge:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        .google-play-badge img {
+            height: 60px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        /* Temporary Google Play Badge Styling - Remove when replacing with real badge */
+        .temp-google-play-btn {
+            background: #000000;
             color: white;
-            padding: 1rem 2rem;
+            padding: 0;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 400;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 12px;
+            width: 180px;
+            height: 60px;
+            padding: 8px 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        .btn-primary:hover {
-            background: #2d8f3f;
-            transform: translateY(-1px);
+        .temp-google-play-btn:hover {
+            background: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .google-play-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(45deg, #4285f4, #34a853, #fbbc05, #ea4335);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .google-play-icon::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 6px solid white;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            margin-left: 1px;
+        }
+
+        .button-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1;
+        }
+
+        .button-text-top {
+            font-size: 10px;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-bottom: 2px;
+        }
+
+        .button-text-bottom {
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+        }
+
+        /* Instructions for easy replacement */
+        .badge-instructions {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            font-size: 10px;
+            color: #9ca3af;
+            opacity: 0.7;
+            white-space: nowrap;
         }
 
         /* Phone Mockups */
@@ -214,97 +292,47 @@
             height: 4px;
             background: #d1d5db;
             border-radius: 2px;
+            z-index: 10;
         }
 
-        .screen-content {
-            padding: 30px 20px 20px;
+        /* App Screenshot Containers */
+        .app-screenshot {
+            width: 100%;
             height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .screen-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .screen-logo {
-            font-weight: bold;
-            color: #2563eb;
-            font-size: 18px;
-        }
-
-        .screen-time {
-            font-size: 12px;
-            color: #6b7280;
-        }
-
-        .search-bar {
             background: #f3f4f6;
-            border: none;
-            border-radius: 10px;
-            padding: 12px 16px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            color: #6b7280;
-        }
-
-        .parking-spots {
-            flex: 1;
-        }
-
-        .spot-item {
-            background: #f8fafc;
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 12px;
-            border-left: 4px solid #2563eb;
-        }
-
-        .spot-title {
-            font-size: 12px;
-            font-weight: bold;
-            color: #1f2937;
-            margin-bottom: 4px;
-        }
-
-        .spot-details {
-            font-size: 10px;
-            color: #6b7280;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400" fill="%23e5e7eb"><rect width="200" height="400" fill="%23f3f4f6"/><text x="100" y="200" text-anchor="middle" fill="%23374151" font-family="Arial" font-size="14">Replace with your app screenshot</text></svg>');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
-            justify-content: space-between;
-        }
-
-        .map-screen {
-            background: linear-gradient(135deg, #e5f3ff 0%, #f0f9ff 100%);
-            display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-        }
-
-        .map-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .map-text {
-            color: #374151;
+            color: #6b7280;
             font-size: 12px;
-            margin-bottom: 20px;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        .book-btn {
-            background: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            padding: 8px 16px;
-            font-size: 11px;
-            font-weight: 600;
+        .app-screenshot.primary {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400" fill="%23e5e7eb"><rect width="200" height="400" fill="%23f3f4f6"/><text x="100" y="180" text-anchor="middle" fill="%23374151" font-family="Arial" font-size="12">Main App Screen</text><text x="100" y="200" text-anchor="middle" fill="%23374151" font-family="Arial" font-size="10">Replace this with your</text><text x="100" y="215" text-anchor="middle" fill="%23374151" font-family="Arial" font-size="10">app screenshot</text></svg>');
+        }
+
+        .app-screenshot.secondary {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400" fill="%23e5e7eb"><rect width="200" height="400" fill="%23f8fafc"/><text x="100" y="180" text-anchor="middle" fill="%23374151" font-family="Arial" font-size="12">Secondary Screen</text><text x="100" y="200" text-anchor="middle" fill="%23374151" font-family="Arial" font-size="10">Replace this with your</text><text x="100" y="215" text-anchor="middle" fill="%23374151" font-family="Arial" font-size="10">second app screenshot</text></svg>');
+        }
+
+        /* Instructions for developers */
+        .mockup-instructions {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #9ca3af;
+            text-align: center;
+            opacity: 0.7;
+            white-space: nowrap;
         }
 
         .btn-primary {
@@ -648,68 +676,39 @@
                 <p class="hero-subtitle">The smart parking solution built for the Philippines</p>
                 
                 <div class="hero-buttons">
-                    <a href="#download" class="btn-primary">
-                        <span>📱</span>
-                        Get it on Google Play
+                    <!-- 
+                    EASY REPLACEMENT INSTRUCTIONS:
+                    When you get your official Google Play badge, replace the entire content below with:
+                    
+                    <a href="https://play.google.com/store/apps/details?id=your.app.package.name" class="google-play-badge" target="_blank">
+                        <img src="path-to-your-google-play-badge.png" alt="Get it on Google Play">
                     </a>
+                    -->
+                    
+                    <a href="#download" class="temp-google-play-btn">
+                        <div class="google-play-icon"></div>
+                        <div class="button-text">
+                            <span class="button-text-top">GET IT ON</span>
+                            <span class="button-text-bottom">Google Play</span>
+                        </div>
+                    </a>
+                    <div class="badge-instructions">Replace with official Google Play badge when ready</div>
                 </div>
             </div>
             
             <div class="hero-phones">
                 <div class="phone-mockup secondary">
-                    <div class="phone-screen map-screen">
-                        <div class="screen-content">
-                            <div class="screen-header">
-                                <div class="screen-logo">ParkTayo</div>
-                                <div class="screen-time">9:41</div>
-                            </div>
-                            <div class="map-icon">🗺️</div>
-                            <div class="map-text">Finding nearby<br>parking spots...</div>
-                            <button class="book-btn">View Map</button>
-                        </div>
+                    <div class="phone-screen">
+                        <div class="app-screenshot secondary"></div>
                     </div>
+                    <div class="mockup-instructions">Secondary Screen</div>
                 </div>
                 
                 <div class="phone-mockup primary">
                     <div class="phone-screen">
-                        <div class="screen-content">
-                            <div class="screen-header">
-                                <div class="screen-logo">ParkTayo</div>
-                                <div class="screen-time">9:41</div>
-                            </div>
-                            <input class="search-bar" placeholder="Search parking locations..." readonly>
-                            <div class="parking-spots">
-                                <div class="spot-item">
-                                    <div class="spot-title">SM Mall of Asia</div>
-                                    <div class="spot-details">
-                                        <span>Available: 15 spots</span>
-                                        <span>₱50/hr</span>
-                                    </div>
-                                </div>
-                                <div class="spot-item">
-                                    <div class="spot-title">Ayala Center Makati</div>
-                                    <div class="spot-details">
-                                        <span>Available: 8 spots</span>
-                                        <span>₱60/hr</span>
-                                    </div>
-                                </div>
-                                <div class="spot-item">
-                                    <div class="spot-title">BGC Central Square</div>
-                                    <div class="spot-details">
-                                        <span>Available: 3 spots</span>
-                                        <span>₱80/hr</span>
-                                    </div>
-                                </div>
-                                <div class="spot-item">
-                                    <div class="spot-title">Greenbelt Mall</div>
-                                    <div class="spot-details">
-                                        <span>Available: 12 spots</span>
-                                        <span>₱55/hr</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="app-screenshot primary"></div>
                     </div>
+                    <div class="mockup-instructions">Main Screen</div>
                 </div>
             </div>
         </div>
