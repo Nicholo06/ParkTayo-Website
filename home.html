@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkTayo - Smart Parking Solutions Philippines</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #2563eb;
+        }
+
+        .download-btn {
+            background: #2563eb;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: white;
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 6rem;
+        }
+
+        .hero-text {
+            text-align: left;
+            padding-right: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #1f2937;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: #6b7280;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .hero-phones {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #6b7280;
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background: #34a853;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .btn-primary:hover {
+            background: #2d8f3f;
+            transform: translateY(-1px);
+        }
+
+        /* Phone Mockups */
+        .phone-mockup {
+            width: 220px;
+            height: 440px;
+            background: #1f2937;
+            border-radius: 25px;
+            padding: 8px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .phone-mockup:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .phone-mockup.primary {
+            z-index: 2;
+            transform: scale(1.15);
+        }
+
+        .phone-mockup.primary:hover {
+            transform: scale(1.18) translateY(-5px);
+        }
+
+        .phone-mockup.secondary {
+            z-index: 1;
+            opacity: 0.7;
+            transform: translateX(-20px);
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .phone-screen::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #d1d5db;
+            border-radius: 2px;
+        }
+
+        .screen-content {
+            padding: 30px 20px 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .screen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .screen-logo {
+            font-weight: bold;
+            color: #2563eb;
+            font-size: 18px;
+        }
+
+        .screen-time {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .search-bar {
+            background: #f3f4f6;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .parking-spots {
+            flex: 1;
+        }
+
+        .spot-item {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid #2563eb;
+        }
+
+        .spot-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+
+        .spot-details {
+            font-size: 10px;
+            color: #6b7280;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .map-screen {
+            background: linear-gradient(135deg, #e5f3ff 0%, #f0f9ff 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .map-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .map-text {
+            color: #374151;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .book-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #2563eb;
+            padding: 1rem 2rem;
+            border: 2px solid #2563eb;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #2563eb;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+            color: #1f2937;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .service-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .feature-item p {
+            color: #6b7280;
+        }
+
+        /* App Download Section */
+        .app-download {
+            padding: 80px 0;
+            background: #1f2937;
+            color: white;
+            text-align: center;
+        }
+
+        .app-download h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .app-download p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: #d1d5db;
+        }
+
+        .app-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .app-btn {
+            background: white;
+            color: #1f2937;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .app-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: #111827;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            padding: 0.3rem 0;
+        }
+
+        .footer-section ul li a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+                padding: 0 1rem;
+            }
+
+            .hero-text {
+                text-align: center;
+                padding-right: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-phones {
+                justify-content: center;
+                gap: 1rem;
+                padding-left: 0;
+            }
+
+            .phone-mockup {
+                width: 160px;
+                height: 320px;
+            }
+
+            .phone-mockup.primary {
+                transform: scale(1.1);
+            }
+
+            .phone-mockup.primary:hover {
+                transform: scale(1.12) translateY(-3px);
+            }
+
+            .phone-mockup.secondary {
+                transform: translateX(-10px);
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .hero-content {
+                padding: 0 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">ParkTayo</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#download" class="download-btn">Get the App</a>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Find parking anytime, anywhere</h1>
+                <p class="hero-subtitle">The smart parking solution built for the Philippines</p>
+                
+                <div class="hero-buttons">
+                    <a href="#download" class="btn-primary">
+                        <span>📱</span>
+                        Get it on Google Play
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-phones">
+                <div class="phone-mockup secondary">
+                    <div class="phone-screen map-screen">
+                        <div class="screen-content">
+                            <div class="screen-header">
+                                <div class="screen-logo">ParkTayo</div>
+                                <div class="screen-time">9:41</div>
+                            </div>
+                            <div class="map-icon">🗺️</div>
+                            <div class="map-text">Finding nearby<br>parking spots...</div>
+                            <button class="book-btn">View Map</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phone-mockup primary">
+                    <div class="phone-screen">
+                        <div class="screen-content">
+                            <div class="screen-header">
+                                <div class="screen-logo">ParkTayo</div>
+                                <div class="screen-time">9:41</div>
+                            </div>
+                            <input class="search-bar" placeholder="Search parking locations..." readonly>
+                            <div class="parking-spots">
+                                <div class="spot-item">
+                                    <div class="spot-title">SM Mall of Asia</div>
+                                    <div class="spot-details">
+                                        <span>Available: 15 spots</span>
+                                        <span>₱50/hr</span>
+                                    </div>
+                                </div>
+                                <div class="spot-item">
+                                    <div class="spot-title">Ayala Center Makati</div>
+                                    <div class="spot-details">
+                                        <span>Available: 8 spots</span>
+                                        <span>₱60/hr</span>
+                                    </div>
+                                </div>
+                                <div class="spot-item">
+                                    <div class="spot-title">BGC Central Square</div>
+                                    <div class="spot-details">
+                                        <span>Available: 3 spots</span>
+                                        <span>₱80/hr</span>
+                                    </div>
+                                </div>
+                                <div class="spot-item">
+                                    <div class="spot-title">Greenbelt Mall</div>
+                                    <div class="spot-details">
+                                        <span>Available: 12 spots</span>
+                                        <span>₱55/hr</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🅿️</div>
+                    <h3>Smart Parking</h3>
+                    <p>Find and reserve parking spots in real-time across Metro Manila's busiest locations.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Mall Parking</h3>
+                    <p>Skip the search at shopping centers. Pre-book your spot and head straight to your reserved space.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">✈️</div>
+                    <h3>Airport Parking</h3>
+                    <p>Secure parking at NAIA and other airports with shuttle service included.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <h3>Hospital Parking</h3>
+                    <p>Priority parking for medical appointments with spots close to entrances.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose ParkTayo</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Booking</h3>
+                    <p>Reserve your parking spot in seconds with our simple one-tap booking system.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">💳</div>
+                    <h3>Cashless Payments</h3>
+                    <p>Pay securely through the app with your preferred payment method.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">📍</div>
+                    <h3>GPS Navigation</h3>
+                    <p>Get turn-by-turn directions to your reserved parking space.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure Locations</h3>
+                    <p>All partner locations are verified and monitored for your safety.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Download Section -->
+    <section id="download" class="app-download">
+        <div class="container">
+            <h2>Get Early Access</h2>
+            <p>Be among the first to experience smart parking in the Philippines</p>
+            
+            <div class="app-buttons">
+                <a href="#" class="app-btn">
+                    <span>📧</span>
+                    <span>Notify Me - iOS</span>
+                </a>
+                <a href="#" class="app-btn">
+                    <span>📱</span>
+                    <span>Notify Me - Android</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Smart Parking</a></li>
+                        <li><a href="#">Mall Parking</a></li>
+                        <li><a href="#">Airport Parking</a></li>
+                        <li><a href="#">Hospital Parking</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Partner with Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Coverage</h4>
+                    <ul>
+                        <li><a href="#">Metro Manila</a></li>
+                        <li><a href="#">Makati</a></li>
+                        <li><a href="#">BGC</a></li>
+                        <li><a href="#">Ortigas</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 ParkTayo Philippines. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            if (navMenu.style.display === 'flex') {
+                navMenu.style.display = 'none';
+            } else {
+                navMenu.style.display = 'flex';
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '100%';
+                navMenu.style.left = '0';
+                navMenu.style.right = '0';
+                navMenu.style.background = 'white';
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.padding = '1rem 2rem';
+                navMenu.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Simple hover effects for service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
