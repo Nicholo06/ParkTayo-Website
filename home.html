@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Arial', Helvetica Neue, Helvetica sans-serif;
             line-height: 1.6;
             color: #333;
         }
@@ -38,9 +38,18 @@
         }
 
         .logo {
+            text-decoration: none;
             font-size: 1.8rem;
             font-weight: bold;
-            color: #2563eb;
+            color: #000000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
         }
 
         .nav-menu {
@@ -50,36 +59,34 @@
         }
 
         .nav-menu a {
+            font-size: 1.3rem;
             text-decoration: none;
             color: #333;
-            font-weight: 500;
+            font-weight: 600;
             transition: color 0.3s ease;
         }
 
         .nav-menu a:hover {
-            color: #2563eb;
+            color: #8973cf;
         }
 
-        .download-btn {
-            background: #2563eb;
-            color: white;
+        .landlord-btn {
+            background: white;
+            color: #8973cf;
             padding: 0.7rem 1.5rem;
-            border: none;
+            border: 1px solid #8973cf;
             border-radius: 6px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             text-decoration: none;
             transition: background 0.3s ease;
         }
 
-        .download-btn:hover {
-            background: #1d4ed8;
-        }
 
         /* Hero Section */
         .hero {
             background: white;
-            padding: 140px 0 80px;
+            padding: 180px 0 100px;
             text-align: center;
         }
 
@@ -123,20 +130,6 @@
             padding-left: 2rem;
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: #1f2937;
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            color: #6b7280;
-            margin-bottom: 3rem;
-            font-weight: 400;
-        }
-
         .hero-buttons {
             display: flex;
             gap: 1rem;
@@ -175,10 +168,10 @@
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 1px;
             width: 180px;
             height: 60px;
-            padding: 8px 12px;
+            padding: 8px 17px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
@@ -189,27 +182,12 @@
         }
 
         .google-play-icon {
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(45deg, #4285f4, #34a853, #fbbc05, #ea4335);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+            width: 40px;
+            height: 30px;
+          
         }
 
-        .google-play-icon::before {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 6px solid white;
-            border-top: 4px solid transparent;
-            border-bottom: 4px solid transparent;
-            margin-left: 1px;
-        }
+   
 
         .button-text {
             display: flex;
@@ -244,8 +222,8 @@
 
         /* Phone Mockups */
         .phone-mockup {
-            width: 220px;
-            height: 440px;
+            width: 260px;
+            height: 510px;
             background: #1f2937;
             border-radius: 25px;
             padding: 8px;
@@ -263,13 +241,10 @@
             transform: scale(1.15);
         }
 
-        .phone-mockup.primary:hover {
-            transform: scale(1.18) translateY(-5px);
-        }
+       
 
         .phone-mockup.secondary {
             z-index: 1;
-            opacity: 0.7;
             transform: translateX(-20px);
         }
 
@@ -283,16 +258,7 @@
         }
 
         .phone-screen::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: #d1d5db;
-            border-radius: 2px;
-            z-index: 10;
+           display: none;
         }
 
         /* App Screenshot Containers */
@@ -300,10 +266,9 @@
             width: 100%;
             height: 100%;
             background: #f3f4f6;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400" fill="%23e5e7eb"><rect width="200" height="400" fill="%23f3f4f6"/><text x="100" y="200" text-anchor="middle" fill="%23374151" font-family="Arial" font-size="14">Replace with your app screenshot</text></svg>');
+            background-image: url(':image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400" fill="%23e5e7eb"><rect width="200" height="400" fill="%23f3f4f6"/><text x="100" y="200" text-anchor="middle" fill="%23374151" font-family="Arial" font-size="14">Replace with your app screenshot</text></svg>');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -315,24 +280,20 @@
         }
 
         .app-screenshot.primary {
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400" fill="%23e5e7eb"><rect width="200" height="400" fill="%23f3f4f6"/><text x="100" y="180" text-anchor="middle" fill="%23374151" font-family="Arial" font-size="12">Main App Screen</text><text x="100" y="200" text-anchor="middle" fill="%23374151" font-family="Arial" font-size="10">Replace this with your</text><text x="100" y="215" text-anchor="middle" fill="%23374151" font-family="Arial" font-size="10">app screenshot</text></svg>');
+            background-image: url('/');
         }
 
         .app-screenshot.secondary {
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400" fill="%23e5e7eb"><rect width="200" height="400" fill="%23f8fafc"/><text x="100" y="180" text-anchor="middle" fill="%23374151" font-family="Arial" font-size="12">Secondary Screen</text><text x="100" y="200" text-anchor="middle" fill="%23374151" font-family="Arial" font-size="10">Replace this with your</text><text x="100" y="215" text-anchor="middle" fill="%23374151" font-family="Arial" font-size="10">second app screenshot</text></svg>');
+            background-image: url('ParkTayo-Mockup.jpg');
+            
+            
+  
         }
 
         /* Instructions for developers */
         .mockup-instructions {
-            position: absolute;
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 10px;
-            color: #9ca3af;
-            text-align: center;
-            opacity: 0.7;
-            white-space: nowrap;
+            display: none;
+            
         }
 
         .btn-primary {
@@ -656,14 +617,17 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">ParkTayo</div>
+            <a href="home.html" class="logo">
+                <img src="parktayo.png" alt="ParkTayo Logo">
+                ParkTayo
+            </a>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <a href="#download" class="download-btn">Get the App</a>
+            <a href="" class="landlord-btn">Become a landlord</a>
             <button class="mobile-menu-btn">☰</button>
         </div>
     </nav>
@@ -676,23 +640,14 @@
                 <p class="hero-subtitle">The smart parking solution built for the Philippines</p>
                 
                 <div class="hero-buttons">
-                    <!-- 
-                    EASY REPLACEMENT INSTRUCTIONS:
-                    When you get your official Google Play badge, replace the entire content below with:
-                    
-                    <a href="https://play.google.com/store/apps/details?id=your.app.package.name" class="google-play-badge" target="_blank">
-                        <img src="path-to-your-google-play-badge.png" alt="Get it on Google Play">
-                    </a>
-                    -->
-                    
                     <a href="#download" class="temp-google-play-btn">
-                        <div class="google-play-icon"></div>
+                        <img src="Google_Play_2022_icon.svg" alt="Google Play" class="google-play-icon">
                         <div class="button-text">
                             <span class="button-text-top">GET IT ON</span>
                             <span class="button-text-bottom">Google Play</span>
                         </div>
                     </a>
-                    <div class="badge-instructions">Replace with official Google Play badge when ready</div>
+                    <div class="badge-instructions"></div>
                 </div>
             </div>
             
@@ -701,14 +656,14 @@
                     <div class="phone-screen">
                         <div class="app-screenshot secondary"></div>
                     </div>
-                    <div class="mockup-instructions">Secondary Screen</div>
+                    <div class="mockup-instructions"></div>
                 </div>
                 
                 <div class="phone-mockup primary">
                     <div class="phone-screen">
                         <div class="app-screenshot primary"></div>
                     </div>
-                    <div class="mockup-instructions">Main Screen</div>
+                    <div class="mockup-instructions"></div>
                 </div>
             </div>
         </div>
